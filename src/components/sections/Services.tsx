@@ -37,7 +37,7 @@ const services = [
         icon: Globe,
         title: "Full Stack Systems",
         description: "End-to-end development, taking projects from concept to deployment with CI/CD pipelines and cloud infrastructure.",
-        tags: ["AWS", "Docker", "CI/CD"],
+        tags: ["AWS", "Docker", "Terraform", "CI/CD", "Microservices"],
         className: "md:col-span-2"
     },
     {

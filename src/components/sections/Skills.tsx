@@ -10,28 +10,28 @@ const expertises = [
         category: "LANGUAGES & CORE",
         icon: Terminal,
         status: "OPTIMIZED",
-        skills: ["TypeScript", "JavaScript", "Python", "Go", "SQL", "C++"]
+        skills: ["TypeScript", "JavaScript", "Python", "Java", "PHP"]
     },
     {
         id: "02",
         category: "FRONTEND SYSTEMS",
         icon: Globe,
         status: "ONLINE",
-        skills: ["Next.js 14", "React", "Tailwind CSS", "Framer Motion", "Three.js", "GSAP"]
+        skills: ["React", "Next.js", "Tailwind CSS", "Bootstrap", "DaisyUI", "Framer Motion"]
     },
     {
         id: "03",
         category: "BACKEND ARCHITECTURE",
         icon: Layers,
         status: "ACTIVE",
-        skills: ["Node.js", "Express", "NestJS", "GraphQL", "WebSockets", "Microservices"]
+        skills: ["Node.js", "Express.js", "NestJS", "GraphQL", "WebSockets", "Microservices"]
     },
     {
         id: "04",
         category: "DATA & INFRASTRUCTURE",
         icon: Database,
         status: "SECURE",
-        skills: ["PostgreSQL", "MongoDB", "Redis", "Docker", "AWS", "Terraform"]
+        skills: ["PostgreSQL", "MySQL", "MongoDB", "Firebase", "Redis", "Docker"]
     }
 ];
 

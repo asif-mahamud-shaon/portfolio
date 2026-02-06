@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -65,13 +66,44 @@ export default function Navbar() {
                     ))}
                 </nav>
 
-                {/* Mobile Menu Button (Visual Only for now) */}
-                <button className="md:hidden text-white/80 hover:text-white">
-                    <div className="space-y-2">
-                        <span className="block w-8 h-0.5 bg-current"></span>
-                        <span className="block w-8 h-0.5 bg-current"></span>
+                {/* Mobile Menu Button - 3 Lines (Hamburger) */}
+                <button
+                    className="md:hidden text-white/80 hover:text-white z-50 relative"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                    <div className="space-y-1.5">
+                        <span className={`block w-8 h-0.5 bg-current transition-transform duration-300 ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`}></span>
+                        <span className={`block w-8 h-0.5 bg-current transition-opacity duration-300 ${mobileMenuOpen ? "opacity-0" : ""}`}></span>
+                        <span className={`block w-8 h-0.5 bg-current transition-transform duration-300 ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`}></span>
                     </div>
                 </button>
+
+                {/* Mobile Menu Overlay */}
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        className="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 flex flex-col items-center justify-center space-y-8 md:hidden"
+                    >
+                        {[
+                            { name: "Expertise", href: "#expertise" },
+                            { name: "Services", href: "#services" },
+                            { name: "Projects", href: "#work" },
+                            { name: "Work", href: "#experience" },
+                            { name: "Contact", href: "#contact" }
+                        ].map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="text-2xl font-bold text-white hover:text-emerald-500 transition-colors"
+                            >
+                                {item.name}
+                            </a>
+                        ))}
+                    </motion.div>
+                )}
             </div>
         </motion.header>
     );

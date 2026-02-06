@@ -48,7 +48,7 @@ export default function Mindset() {
                 <p className="text-gray-400">My systematic approach to solving the unsolvable.</p>
             </div>
 
-            <div className="container mx-auto max-w-7xl px-6 h-[500px] md:h-[600px] flex flex-col md:flex-row gap-4">
+            <div className="container mx-auto max-w-7xl px-6 flex flex-col md:flex-row gap-4 h-auto md:h-[600px]">
                 {steps.map((step, index) => {
                     const isActive = active === index;
                     return (
@@ -56,7 +56,7 @@ export default function Mindset() {
                             key={index}
                             layout
                             onClick={() => setActive(index)}
-                            className={`relative cursor-pointer rounded-3xl border border-white/10 overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isActive ? "flex-[3] bg-white/5" : "flex-[1] bg-white/[0.02] hover:bg-white/5"
+                            className={`relative cursor-pointer rounded-3xl border border-white/10 overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] ${isActive ? "min-h-[500px] md:min-h-0 md:flex-[3] bg-white/5" : "h-[100px] md:h-auto md:flex-[1] bg-white/[0.02] hover:bg-white/5"
                                 }`}
                         >
                             {/* Gradient Background (Active Only) */}
@@ -68,7 +68,7 @@ export default function Mindset() {
                             </span>
 
                             {/* Content Container */}
-                            <div className="relative h-full flex flex-col justify-end p-8 md:p-12">
+                            <div className="relative h-full flex flex-col justify-end p-8 md:p-12 pt-32 md:pt-12">
 
                                 {/* Top Content (Icon) */}
                                 <div className="absolute top-8 left-8 md:left-12">

@@ -80,9 +80,14 @@ export default function Projects() {
                                         >
                                             View Project <ExternalLink size={18} />
                                         </Link>
-                                        <button className="flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-6 py-3 font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10">
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-6 py-3 font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+                                        >
                                             <Github size={18} /> Source
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -150,9 +155,14 @@ export default function Projects() {
                                     >
                                         View <ExternalLink size={16} />
                                     </Link>
-                                    <button className="flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white">
+                                    <a
+                                        href={project.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center justify-center gap-2 rounded-lg border border-white/20 bg-black/50 px-4 py-3 text-white"
+                                    >
                                         <Github size={16} />
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </motion.div>
