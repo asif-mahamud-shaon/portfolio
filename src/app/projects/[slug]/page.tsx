@@ -1,14 +1,16 @@
 "use client";
 
 import { projects } from "@/lib/data";
-import { ArrowLeft, ExternalLink, Github, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, CheckCircle2, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
     const project = projects.find((p) => p.slug === params.slug);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
     if (!project) {
         notFound();
@@ -16,23 +18,16 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
 
     return (
         <main className="min-h-screen bg-black text-white selection:bg-white/20 pb-20">
-            {/* Hero Header */}
-            <div className="relative h-[60vh] w-full overflow-hidden">
-                <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover opacity-30 select-none"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-b ${project.color} opacity-40 mix-blend-multiply`} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+            {/* Hero Header - No Background Image */}
+            <div className={`relative h-[50vh] w-full overflow-hidden flex flex-col justify-end bg-gradient-to-br ${project.color}`}>
+                <div className="absolute inset-0 bg-black/80" /> {/* Dark Overlay */}
 
-                <div className="container relative z-10 h-full flex flex-col justify-end pb-12 md:pb-24 px-4 mx-auto max-w-6xl">
+                <div className="container relative z-10 h-full flex flex-col justify-between pt-10 pb-12 md:pb-24 px-4 mx-auto max-w-6xl">
                     <Link
-                        href="/#projects"
-                        className="absolute top-8 left-4 md:left-8 flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"
+                        href="/#work"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 hover:bg-white/10 hover:text-white hover:border-white/20 transition-all w-fit"
                     >
-                        <ArrowLeft size={16} /> Back to System
+                        <ArrowLeft size={16} /> Back to Projects
                     </Link>
 
                     <motion.div
@@ -45,7 +40,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                                 {project.category}
                             </span>
                         </div>
-                        <h1 className="text-5xl md:text-7xl font-bold mb-6">{project.title}</h1>
+                        <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">{project.title}</h1>
                         <p className="text-xl md:text-2xl text-gray-300 max-w-2xl leading-relaxed">
                             {project.description}
                         </p>
@@ -90,23 +85,28 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                         </div>
                     </section>
 
-                    {/* Mockup Gallery Placeholder */}
+                    {/* Mockup Gallery with Lightbox */}
                     <section>
                         <h2 className="text-2xl font-bold mb-6 text-white">System Interface</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {/* Placeholder for Gallery Images */}
-                            <div className="aspect-[16/10] bg-neutral-900 rounded-xl border border-white/10 flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors" />
-                                <span className="text-gray-600 font-mono text-sm px-4 text-center">
-                                    Add image: public{project.gallery[0]}
-                                </span>
-                            </div>
-                            <div className="aspect-[16/10] bg-neutral-900 rounded-xl border border-white/10 flex items-center justify-center relative overflow-hidden group">
-                                <div className="absolute inset-0 bg-white/5 group-hover:bg-white/10 transition-colors" />
-                                <span className="text-gray-600 font-mono text-sm px-4 text-center">
-                                    Add image: public{project.gallery[1]}
-                                </span>
-                            </div>
+                            {project.gallery.map((img, i) => (
+                                <motion.div
+                                    key={i}
+                                    whileHover={{ scale: 1.02 }}
+                                    className="aspect-[16/10] bg-neutral-900 rounded-xl border border-white/10 relative overflow-hidden group cursor-pointer"
+                                    onClick={() => setSelectedImage(img)}
+                                >
+                                    <Image
+                                        src={img}
+                                        alt={`${project.title} gallery ${i + 1}`}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                        <ExternalLink className="text-white drop-shadow-md" />
+                                    </div>
+                                </motion.div>
+                            ))}
                         </div>
                     </section>
                 </div>
@@ -142,6 +142,37 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                     </div>
                 </div>
             </div>
+
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setSelectedImage(null)}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md"
+                    >
+                        <button className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50">
+                            <X size={32} />
+                        </button>
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="relative w-full max-w-6xl aspect-video rounded-xl overflow-hidden shadow-2xl bg-black border border-white/10"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <Image
+                                src={selectedImage}
+                                alt="Gallery Preview"
+                                fill
+                                className="object-contain"
+                            />
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </main>
     );
 }

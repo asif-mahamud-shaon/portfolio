@@ -34,7 +34,7 @@ export default function Navbar() {
                     </div>
 
                     <div className="flex flex-col">
-                        <div className="flex items-center gap-4"> {/* Gap between names */}
+                        <div className="flex items-center gap-3"> {/* Gap between names */}
                             <span className="text-2xl md:text-3xl font-sans font-black text-white tracking-tighter group-hover:text-emerald-400 transition-colors uppercase leading-none">
                                 Asif Mahamud Shaon
                             </span>
@@ -48,13 +48,19 @@ export default function Navbar() {
 
                 {/* Simple Navigation */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {["Expertise", "Work", "System", "Contact"].map((item) => (
+                    {[
+                        { name: "Expertise", href: "#expertise" },
+                        { name: "Services", href: "#services" },
+                        { name: "Projects", href: "#work" },
+                        { name: "Work", href: "#experience" },
+                        { name: "Contact", href: "#contact" }
+                    ].map((item) => (
                         <a
-                            key={item}
-                            href={`#${item.toLowerCase()}`}
+                            key={item.name}
+                            href={item.href}
                             className="text-sm font-medium text-white/60 hover:text-white hover:glow-text transition-all uppercase tracking-wider"
                         >
-                            {item}
+                            {item.name}
                         </a>
                     ))}
                 </nav>

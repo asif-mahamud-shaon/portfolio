@@ -2,7 +2,7 @@
 
 import emailjs from "@emailjs/browser";
 import { motion, useScroll, useTransform, useMotionTemplate, AnimatePresence } from "framer-motion";
-import { ArrowRight, Github, Linkedin, Twitter, Mail, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
+import { ArrowRight, Github, Linkedin, Facebook, Phone, Mail, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { useRef, useState } from "react";
 
 export default function Contact() {
@@ -67,10 +67,11 @@ export default function Contact() {
             <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
 
                 {/* Left Side: The Hook */}
+                {/* Left Side: The Hook */}
                 <motion.div style={{ y, opacity }}>
                     <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
                         Let's Build <br />
-                        <span className="text-gray-700">Something Great.</span>
+                        <span className="text-emerald-500">Something Great.</span>
                     </h2>
                     <p className="text-xl text-gray-400 max-w-md leading-relaxed mb-12">
                         Open for opportunities, collaborations, and technical consulting.
@@ -78,12 +79,19 @@ export default function Contact() {
 
                     <div className="flex gap-6">
                         {[
-                            { Icon: Github, href: "#" },
-                            { Icon: Linkedin, href: "#" },
-                            { Icon: Twitter, href: "#" },
-                            { Icon: Mail, href: "mailto:hello@example.com" }
+                            { Icon: Github, href: "https://github.com/asif-mahamud-shaon/" },
+                            { Icon: Linkedin, href: "https://www.linkedin.com/in/asif-mahamud-shaon01/" },
+                            { Icon: Facebook, href: "https://www.facebook.com/asif.mahamud.shaon" },
+                            { Icon: Phone, href: "https://wa.me/8801704439665" },
+                            { Icon: Mail, href: "mailto:asifmahamud669@gmail.com" }
                         ].map(({ Icon, href }, i) => (
-                            <a key={i} href={href} className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:border-emerald-500 hover:bg-emerald-500/10 transition-all duration-300">
+                            <a
+                                key={i}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-14 h-14 rounded-full border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-500 hover:bg-emerald-500/10 transition-all duration-300"
+                            >
                                 <Icon size={24} />
                             </a>
                         ))}

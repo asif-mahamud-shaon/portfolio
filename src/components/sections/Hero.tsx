@@ -53,16 +53,31 @@ export default function Hero() {
             <div className="container relative z-10 px-4 flex flex-col items-center justify-center text-center">
 
                 {/* Badge */}
+                {/* Badge - Premium Tech Version */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 mb-8 backdrop-blur-md"
+                    transition={{ duration: 0.5 }}
+                    className="relative group mb-8"
                 >
-                    <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <span className="text-xs font-mono text-white/60 tracking-wider">ONLINE // DHAKA, BD</span>
+                    {/* Animated Glow Behind */}
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-500" />
+
+                    {/* Main Container */}
+                    <div className="relative flex items-center gap-3 px-4 py-2 rounded-full border border-white/10 bg-black/80 backdrop-blur-xl hover:border-emerald-500/30 transition-colors duration-300">
+                        {/* Pulsing Dot */}
+                        <div className="relative flex h-2.5 w-2.5">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></span>
+                        </div>
+
+                        {/* Text Content */}
+                        <div className="flex items-center gap-2 text-xs font-mono tracking-widest">
+                            <span className="text-emerald-400 font-bold">ONLINE</span>
+                            <span className="text-white/20">//</span>
+                            <span className="text-gray-300 group-hover:text-white transition-colors">DHAKA, BD</span>
+                        </div>
+                    </div>
                 </motion.div>
 
                 {/* Main Title */}

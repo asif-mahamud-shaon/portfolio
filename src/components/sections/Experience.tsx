@@ -6,7 +6,19 @@ import { useRef } from "react";
 
 const experiences = [
     {
-        year: "2025 – Present",
+        year: "Nov 2025 – Present",
+        role: "Founder and CEO",
+        company: "Codiora Tech",
+        link: "https://codioratech.com/",
+        location: "Remote",
+        description: [
+            "Founded a tech company delivering innovative digital solutions.",
+            "Specializing in scalable web development and custom software architectures.",
+            "Driving business growth through modern engineering and creative strategy."
+        ]
+    },
+    {
+        year: "Nov 2025 – Present",
         role: "Full Stack Developer",
         company: "Bengal Tech Solutions",
         location: "Remote",
@@ -29,7 +41,7 @@ const experiences = [
     },
     {
         year: "2020 – 2023",
-        role: "Digital Team Lead",
+        role: "Digital Lead Generation",
         company: "Fiverr (Freelance)",
         location: "Remote",
         description: [
@@ -54,7 +66,7 @@ export default function Experience() {
     });
 
     return (
-        <section className="py-24 md:py-32 bg-black relative">
+        <section id="experience" className="py-24 md:py-32 bg-black relative">
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none opacity-20" />
 
             <div className="container max-w-6xl mx-auto px-6 relative z-10">
@@ -85,7 +97,8 @@ export default function Experience() {
                     <div className="space-y-12">
                         {experiences.map((exp, index) => {
                             // Calculate approximate threshold for this item (0=0.1, 1=0.5, 2=0.9)
-                            const threshold = index * 0.4;
+                            // Reduced step so all 4 items fit (0, 0.2, 0.4, 0.6)
+                            const threshold = index * 0.2;
 
                             // Dynamic Styles based on whether the "Laser Line" has passed this point
                             // Opacity: Fades in when line reaches
@@ -140,7 +153,15 @@ export default function Experience() {
                                                 {exp.role}
                                             </h3>
                                             <div className="text-gray-400 text-sm mb-6 flex items-center gap-2">
-                                                <span>{exp.company}</span>
+                                                {/* Company Name - Link if available */}
+                                                {exp.link ? (
+                                                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors border-b border-transparent hover:border-emerald-400/50">
+                                                        {exp.company}
+                                                    </a>
+                                                ) : (
+                                                    <span>{exp.company}</span>
+                                                )}
+
                                                 <span className="w-1 h-1 bg-gray-600 rounded-full" />
                                                 <span>{exp.location}</span>
                                             </div>
