@@ -64,45 +64,25 @@ export default function Contact() {
                 <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-blue-900/20 rounded-full blur-[150px] animate-blob animation-delay-2000 mix-blend-screen" />
             </div>
 
-            <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-20 items-center">
+            <div className="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
-                {/* Left Side: The Hook */}
-                {/* Left Side: The Hook */}
-                <motion.div style={{ y, opacity }}>
+                {/* 1. Header Text (Left Top on Desktop, Top on Mobile) */}
+                <motion.div style={{ y, opacity }} className="lg:col-start-1 lg:row-start-1">
                     <h2 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
                         Let's Build <br />
                         <span className="text-emerald-500">Something Great.</span>
                     </h2>
-                    <p className="text-xl text-gray-400 max-w-md leading-relaxed mb-12">
+                    <p className="text-xl text-gray-400 max-w-md leading-relaxed mb-8">
                         Open for opportunities, collaborations, and technical consulting.
                     </p>
-
-                    <div className="flex gap-6">
-                        {[
-                            { Icon: Github, href: "https://github.com/asif-mahamud-shaon/" },
-                            { Icon: Linkedin, href: "https://www.linkedin.com/in/asif-mahamud-shaon01/" },
-                            { Icon: Facebook, href: "https://www.facebook.com/asif.mahamud.shaon" },
-                            { Icon: Phone, href: "https://wa.me/8801704439665" },
-                            { Icon: Mail, href: "mailto:asifmahamud669@gmail.com" }
-                        ].map(({ Icon, href }, i) => (
-                            <a
-                                key={i}
-                                href={href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-14 h-14 rounded-full border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-500 hover:bg-emerald-500/10 transition-all duration-300"
-                            >
-                                <Icon size={24} />
-                            </a>
-                        ))}
-                    </div>
                 </motion.div>
 
-                {/* Right Side: The Magnetic Form */}
+                {/* 2. The Magnetic Form (Right Side Spanning 2 Rows on Desktop, Middle on Mobile) */}
                 <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="lg:col-start-2 lg:row-start-1 lg:row-span-2"
                 >
                     <div className="group relative bg-white/[0.03] hover:bg-white/[0.05] border border-white/10 p-10 md:p-16 rounded-[2rem] transition-colors duration-500 backdrop-blur-2xl min-h-[600px] flex items-center justify-center">
 
@@ -242,6 +222,30 @@ export default function Contact() {
                             )}
                         </AnimatePresence>
                     </div>
+                </motion.div>
+
+                {/* 3. Social Icons (Left Bottom on Desktop, Bottom on Mobile) */}
+                <motion.div
+                    style={{ y, opacity }}
+                    className="lg:col-start-1 lg:row-start-2 flex gap-6"
+                >
+                    {[
+                        { Icon: Github, href: "https://github.com/asif-mahamud-shaon/" },
+                        { Icon: Linkedin, href: "https://www.linkedin.com/in/asif-mahamud-shaon01/" },
+                        { Icon: Facebook, href: "https://www.facebook.com/asif.mahamud.shaon" },
+                        { Icon: Phone, href: "https://wa.me/8801704439665" },
+                        { Icon: Mail, href: "mailto:asifmahamud669@gmail.com" }
+                    ].map(({ Icon, href }, i) => (
+                        <a
+                            key={i}
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-14 h-14 rounded-full border border-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-500 hover:bg-emerald-500/10 transition-all duration-300"
+                        >
+                            <Icon size={24} />
+                        </a>
+                    ))}
                 </motion.div>
             </div>
         </section>
