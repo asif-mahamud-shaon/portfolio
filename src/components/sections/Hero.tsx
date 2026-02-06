@@ -94,7 +94,7 @@ export default function Hero() {
                     transition={{ delay: 2.5, duration: 1 }}
                     className="text-lg md:text-xl text-white/50 max-w-2xl font-light tracking-wide mb-12 mt-8"
                 >
-                    Architecting performance-critical applications with modern web technologies.
+                    Architecting performance critical applications with modern web technologies.
                 </motion.p>
 
                 {/* Buttons */}
@@ -104,12 +104,12 @@ export default function Hero() {
                     transition={{ delay: 3 }}
                     className="flex flex-col md:flex-row gap-6"
                 >
-                    <button className="px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase hover:bg-emerald-400 transition-colors duration-300 transform hover:scale-105">
+                    <a href="#work" className="px-8 py-4 bg-white text-black font-bold text-sm tracking-widest uppercase hover:bg-emerald-400 transition-colors duration-300 transform hover:scale-105">
                         View Projects
-                    </button>
-                    <button className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-colors duration-300">
+                    </a>
+                    <a href="#contact" className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition-colors duration-300">
                         Contact Me
-                    </button>
+                    </a>
                 </motion.div>
 
             </div>
