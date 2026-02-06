@@ -61,3 +61,4 @@ To add your own images, place them in the `public/images/` folder and name them 
 ### Theme Colors
 Adjust colors in `src/app/globals.css` and `tailwind.config.ts`.
 "# portfolio" 
+"# portfolio" 
