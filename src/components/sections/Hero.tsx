@@ -115,10 +115,7 @@ export default function Hero() {
             </div>
 
             {/* Decorative Elements */}
-            <div className="absolute bottom-10 left-10 text-xs font-mono text-white/20 hidden md:block">
-                <div>COORDS: 23.8103° N, 90.4125° E</div>
-                <div>STATUS: OPERATIONAL</div>
-            </div>
+
 
             <div className="absolute top-1/2 right-10 transform -translate-y-1/2 flex flex-col gap-4 text-[10px] font-mono text-white/10 hidden md:flex">
                 <div className="rotate-90 origin-right">SCROLL</div>
