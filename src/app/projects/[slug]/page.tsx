@@ -138,7 +138,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
                     {/* Credits or Date */}
                     <div className="text-sm text-gray-500 font-mono">
                         <div>ROLE: Lead Engineer</div>
-                        <div>YEAR: 2024</div>
+                        <div>YEAR: {project.year}</div>
                     </div>
                 </div>
             </div>
