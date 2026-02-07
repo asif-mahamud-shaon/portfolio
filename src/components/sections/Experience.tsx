@@ -4,19 +4,30 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import { Calendar } from "lucide-react";
 import { useRef } from "react";
 
-const experiences = [
-    {
-        year: "Nov 2025 – Present",
-        role: "Founder and CEO",
-        company: "Codiora Tech",
-        link: "https://codioratech.com/",
-        location: "Remote",
-        description: [
-            "Founded a tech company delivering innovative digital solutions.",
-            "Specializing in scalable web development and custom software architectures.",
-            "Driving business growth through modern engineering and creative strategy."
-        ]
-    },
+type ExperienceItem = {
+    year: string;
+    role: string;
+    company: string;
+    link?: string;
+    location: string;
+    description: string[];
+};
+
+const experiences: ExperienceItem[] = [
+    /*
+        {
+            year: "Nov 2025 – Present",
+            role: "Founder and CEO",
+            company: "Codiora Tech",
+            link: "https://codioratech.com/",
+            location: "Remote",
+            description: [
+                "Founded a tech company delivering innovative digital solutions.",
+                "Specializing in scalable web development and custom software architectures.",
+                "Driving business growth through modern engineering and creative strategy."
+            ]
+        },
+        */
     {
         year: "Nov 2025 – Present",
         role: "Full Stack Developer",
