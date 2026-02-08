@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Asif Mahamud Shaon | Full Stack Engineer",
         description: "Portfolio of Asif Mahamud Shaon, a Full-Stack Software Engineer focused on scalable digital systems.",
-        url: "https://asifmahamudshaon.vercel.app",
+        //url: "https://asifmahamudshaon.vercel.app",
         siteName: "Asif Mahamud Shaon Portfolio",
         images: [
             {
-                url: "/images/mediwise.png", // Default image
+                url: "/images/showimage.png", // Default image
                 width: 1200,
                 height: 630,
                 alt: "Asif Mahamud Shaon Portfolio",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
         card: "summary_large_image",
         title: "Asif Mahamud Shaon | Full Stack Engineer",
         description: "Portfolio of Asif Mahamud Shaon, a Full-Stack Software Engineer focused on scalable digital systems.",
-        images: ["/images/mediwise.png"], // Default image
+        images: ["/images/showimage.png"], // Default image
     },
 };
 
